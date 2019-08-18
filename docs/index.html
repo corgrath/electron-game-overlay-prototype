@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game overlay portal</title>
+    <link href="https://fonts.googleapis.com/css?family=Exo&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            font-family: 'Exo', sans-serif;
+        }
+
+        body {
+            background: #202020;
+            color: white;
+        }
+
+        button {
+            display: block;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid gray;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            color: white;
+            margin-bottom: 10px;
+            background: transparent;
+            border: 1px solid darkgray;
+        }
+
+        input[type="text"] {
+            display: block;
+        }
+
+        .draggable-area {
+            display: block;
+            color: gray;
+            /*width:300px;*/
+            /*height:300px;*/
+            /*background-color:blue;*/
+            /*color:white;*/
+            -webkit-app-region: drag;
+        }
+
+    </style>
+</head>
+<body>
+<div class="draggable-area">
+    Drag me
+</div>
+
+<h1>Game overlay portal 2000</h1>
+
+
+<section class="section--main-menu">
+    <h2>Main menu</h2>
+    <button onclick="window.showSection('load-twitch-chat');">Load twitch chat</button>
+    <button onclick="window.showSection('custom-url');">Load custom url</button>
+</section>
+
+<section class="section--load-twitch-chat">
+    <h2>Load in Twitch chat</h2>
+    <div style="margin-bottom: 10px;">Channel name</div>
+    <input type="text" id="twitch-chat-name" value="cohhcarnage"/>
+    <input type="checkbox" id="twitch-chat-darkmode"> Darkmode<br>
+    <button onclick="window.loadTwitchChat()">Load chat</button>
+</section>
+
+<section class="section--custom-url">
+    <h2>Custom URL</h2>
+    <div style="margin-bottom: 10px;">URL</div>
+    <input type="text" id="custom-url" value=""/>
+    <button onclick="window.loadCustomURL()">Load custom URL</button>
+</section>
+
+
+<script>
+
+    window.showSection = function ( id ) {
+
+        document.querySelector(".section--main-menu").style.display = "none";
+        document.querySelector(".section--load-twitch-chat").style.display = "none";
+        document.querySelector(".section--custom-url").style.display = "none";
+
+        document.querySelector(".section--" + id).style.display = "block";
+
+    };
+
+    window.loadTwitchChat = function () {
+
+        var channelName = document.querySelector("#twitch-chat-name").value;
+        var darkmode = document.querySelector("#twitch-chat-darkmode").checked;
+
+        let url = "https://www.twitch.tv/embed/" + channelName + "/chat";
+        if( darkmode ) {
+            url += "?darkpopout";
+        }
+
+        window.location.href = url;
+    };
+
+    window.loadCustomURL = function () {
+        var url = document.querySelector("#custom-url").value;
+        window.location.href = "?redirect=" + url;
+    };
+
+    window.showSection("main-menu");
+
+</script>
+
+
+</body>
+</html>
