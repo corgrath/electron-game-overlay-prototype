@@ -1,0 +1,5 @@
+/.idea/
+/node_modules/
+
+# the output folder
+/electron_game_overay-win32-x64/

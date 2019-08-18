@@ -1,0 +1,18 @@
+{
+  "name": "electron_game_overay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . --asar"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^6.0.2"
+  },
+  "dependencies": {
+    "electron-packager": "^14.0.4"
+  }
+}
