@@ -18,7 +18,7 @@ function createWindow() {
 //     win.webContents.openDevTools()
 
     // and load the index.html of the app.
-    win.loadURL('https://corgrath.github.io/_site-electron-portal/index.html')
+    win.loadURL('https://corgrath.github.io/electron-game-overlay-prototype/index.html');
 
     win.webContents.on('did-finish-load', function () {
 //         win.webContents.insertCSS('* { background: transparent !important; color: white !important; }')
